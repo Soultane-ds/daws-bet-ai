@@ -16,9 +16,8 @@ jobs:
 
       - name: Extract ZIP
         run: |
-          unzip -o daws-bet-ai.zip -d extracted
-          cp -r extracted/* .
-          cp -r extracted/.[!.]* . 2>/dev/null || true
+          unzip -q -o daws-bet-ai.zip -d extracted
+          rsync -a extracted/daws-bet-ai/ ./
           rm -rf extracted daws-bet-ai.zip
 
       - name: Commit extracted project
